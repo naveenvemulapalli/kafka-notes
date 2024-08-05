@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.3.7.2 (Linux)"/>
+	<meta name="created" content="2024-08-06T01:47:00.402479088"/>
+	<meta name="changed" content="2024-08-06T01:47:50.251799229"/>
+	<style type="text/css">
+		@page { size: 21cm 29.7cm; margin: 2cm }
+		p { line-height: 115%; margin-bottom: 0.25cm; background: transparent }
+		h3 { margin-top: 0.25cm; margin-bottom: 0.21cm; background: transparent; page-break-after: avoid }
+		h3.western { font-family: "Liberation Serif", serif; font-size: 14pt; font-weight: bold }
+		h3.cjk { font-family: "Noto Serif CJK SC"; font-size: 14pt; font-weight: bold }
+		h3.ctl { font-family: "Lohit Devanagari"; font-size: 14pt; font-weight: bold }
+		h4 { margin-top: 0.21cm; margin-bottom: 0.21cm; background: transparent; page-break-after: avoid }
+		h4.western { font-family: "Liberation Serif", serif; font-size: 12pt; font-weight: bold }
+		h4.cjk { font-family: "Noto Serif CJK SC"; font-size: 12pt; font-weight: bold }
+		h4.ctl { font-family: "Lohit Devanagari"; font-size: 12pt; font-weight: bold }
+		pre { background: transparent }
+		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		pre.cjk { font-family: "Noto Sans Mono CJK SC", monospace; font-size: 10pt }
+		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		strong { font-weight: bold }
+		a:link { color: #000080; text-decoration: underline }
+		code.western { font-family: "Liberation Mono", monospace }
+		code.cjk { font-family: "Noto Sans Mono CJK SC", monospace }
+		code.ctl { font-family: "Liberation Mono", monospace }
+	</style>
+</head>
+<body lang="en-IN" link="#000080" vlink="#800000" dir="ltr"><h3 class="western">
+Slide Deck: Teaching Kafka to Java Developers</h3>
+<hr/>
+
+<h4 class="western">Slide 1: <strong>Title Slide</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Title:</strong>
+	Introduction to Apache Kafka for Java Developers</p>
+	<li><p style="margin-bottom: 0cm"><strong>Subtitle:</strong> From
+	Basics to Advanced Concepts</p>
+	<li><p style="margin-bottom: 0cm"><strong>Your Name and Contact
+	Information</strong></p>
+	<li><p><strong>Date</strong></p>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 2: <strong>Agenda</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm">Introduction to Apache Kafka</p>
+	<li><p style="margin-bottom: 0cm">Kafka Architecture and Components</p>
+	<li><p style="margin-bottom: 0cm">Setting Up Kafka</p>
+	<li><p style="margin-bottom: 0cm">Producing and Consuming Messages</p>
+	<li><p style="margin-bottom: 0cm">Kafka Streams and KSQL</p>
+	<li><p style="margin-bottom: 0cm">Kafka Connect and Integrations</p>
+	<li><p style="margin-bottom: 0cm">Advanced Kafka Features</p>
+	<li><p>Quizzes and Lab Work</p>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 3: <strong>Introduction to Apache Kafka</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Definition:</strong>
+	Apache Kafka is a distributed streaming platform capable of handling
+	trillions of events a day.</p>
+	<li><p style="margin-bottom: 0cm"><strong>History:</strong>
+	Initially developed at LinkedIn, open-sourced in early 2011, and
+	later became part of the Apache Software Foundation.</p>
+	<li><p style="margin-bottom: 0cm"><strong>Use Cases:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Real-time Data Pipelines:</strong>
+		Moving data between systems in real-time.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Stream Processing:</strong>
+		Analyzing and processing streams of data.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Log Aggregation:</strong>
+		Collecting and managing log data.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Event Sourcing:</strong>
+		Storing the state changes of an application as a sequence of
+		events.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Key Concepts:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Topics:</strong> Named
+		streams of records.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Producers:</strong>
+		Applications that publish data to topics.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Consumers:</strong>
+		Applications that read data from topics.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Brokers:</strong> Kafka
+		servers that store and serve data.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Partitions:</strong>
+		Sub-divisions of topics for parallel processing.</p>
+		<li><p><strong>Offsets:</strong> Unique identifiers for each record
+		within a partition.</p>
+	</ul>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 4: <strong>Kafka Architecture and
+Components</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Kafka Cluster:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Brokers:</strong> Each
+		broker is a Kafka server that handles data storage and serves
+		client requests.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Zookeeper:</strong>
+		Manages cluster metadata and leader election.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Producers and Consumers:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Producers:</strong> Send
+		records to a topic. Can send data synchronously or asynchronously.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Consumers:</strong> Read
+		records from a topic. Can belong to a consumer group to balance the
+		load.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Topics and Partitions:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Topics:</strong> Logical
+		channels for data streams.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Partitions:</strong>
+		Allow topics to be parallelized across multiple servers.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Replication and Fault
+	Tolerance:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Replication Factor:</strong>
+		Number of copies of a partition.</p>
+		<li><p><strong>Leader and Followers:</strong> One leader handles
+		all reads and writes for a partition, while followers replicate the
+		data.</p>
+	</ul>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 5: <strong>Setting Up Kafka</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Prerequisites:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Java:</strong> Ensure
+		Java is installed and configured.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Zookeeper:</strong> Kafka
+		relies on Zookeeper for distributed coordination.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Kafka Binaries:</strong>
+		Download from the official Apache Kafka website.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Installation Steps:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Download Kafka:</strong>
+		Obtain the latest version from <a href="https://kafka.apache.org/downloads" target="_new">Kafka
+		Downloads</a>.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Extract Files:</strong>
+		Unzip the downloaded archive.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Configuration:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm"><strong>Server Properties:</strong>
+			Configure <code class="western">server.properties</code> for
+			broker settings.</p>
+			<li><p style="margin-bottom: 0cm"><strong>Zookeeper Properties:</strong>
+			Configure <code class="western">zookeeper.properties</code> for
+			Zookeeper settings.</p>
+		</ul>
+		<li><p style="margin-bottom: 0cm"><strong>Start Services:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm"><strong>Start Zookeeper:</strong>
+			<code class="western">bin/zookeeper-server-start.sh
+			config/zookeeper.properties</code></p>
+			<li><p style="margin-bottom: 0cm"><strong>Start Kafka Broker:</strong>
+			<code class="western">bin/kafka-server-start.sh
+			config/server.properties</code></p>
+		</ul>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Basic Commands:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Create Topic:</strong>
+		<code class="western">bin/kafka-topics.sh --create --topic test
+		--bootstrap-server localhost:9092 --partitions 1
+		--replication-factor 1</code></p>
+		<li><p style="margin-bottom: 0cm"><strong>List Topics:</strong>
+		<code class="western">bin/kafka-topics.sh --list --bootstrap-server
+		localhost:9092</code></p>
+		<li><p><strong>Describe Topic:</strong> <code class="western">bin/kafka-topics.sh
+		--describe --topic test --bootstrap-server localhost:9092</code></p>
+	</ul>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 6: <strong>Quiz: Basic Concepts</strong></h4>
+<ol>
+	<li><p style="margin-bottom: 0cm"><strong>What is a Kafka Topic?</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm">A named stream of records where
+		data is sent by producers and read by consumers.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>How does Kafka ensure
+	fault tolerance?</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm">Through data replication across
+		multiple brokers.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Describe the role of a
+	Kafka Broker.</strong></p>
+	<ul>
+		<li><p>A broker is a Kafka server that stores data and serves
+		client requests.</p>
+	</ul>
+</ol>
+<hr/>
+
+<h4 class="western">Slide 7: <strong>Lab Work: Setting Up Kafka</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Objective:</strong>
+	Install and configure Kafka on your machine.</p>
+	<li><p style="margin-bottom: 0cm"><strong>Steps:</strong></p>
+	<ol>
+		<li><p style="margin-bottom: 0cm"><strong>Download Kafka:</strong>
+		Visit the official Kafka website and download the latest version.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Extract Files:</strong>
+		Unzip the downloaded archive to your desired directory.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Configure Zookeeper and
+		Kafka:</strong> Edit <code class="western">config/zookeeper.properties</code>
+		and <code class="western">config/server.properties</code>.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Start Zookeeper:</strong>
+		Run the command to start Zookeeper.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Start Kafka Broker:</strong>
+		Run the command to start the Kafka broker.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Create and List Topics:</strong>
+		Use Kafka CLI tools to create a topic and list all topics.</p>
+	</ol>
+	<li><p><strong>Resources:</strong> <a href="https://kafka.apache.org/quickstart" target="_new">Kafka
+	Quickstart</a>, <a href="https://kafka.apache.org/documentation/" target="_new">Kafka
+	Documentation</a></p>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 8: <strong>Producing Messages</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Producer API:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Overview:</strong> The
+		Producer API allows applications to send streams of data to Kafka
+		topics.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Key Methods:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm"><strong>send():</strong> Sends a
+			record to a topic.</p>
+			<li><p style="margin-bottom: 0cm"><strong>flush():</strong> Waits
+			for all sent records to be acknowledged.</p>
+			<li><p style="margin-bottom: 0cm"><strong>close():</strong> Closes
+			the producer and releases resources.</p>
+		</ul>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Message Format:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Key:</strong> Used to
+		determine the partition to which the record is sent.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Value:</strong> The
+		actual data payload.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Headers:</strong>
+		Optional metadata.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Synchronous vs
+	Asynchronous Sends:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Synchronous:</strong>
+		Blocking call, waits for a response from Kafka.</p>
+		<li><p><strong>Asynchronous:</strong> Non-blocking, sends data in
+		the background.</p>
+	</ul>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 9: <strong>Consuming Messages</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Consumer API:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Overview:</strong> The
+		Consumer API allows applications to read streams of data from Kafka
+		topics.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Key Methods:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm"><strong>poll():</strong> Fetches
+			records from the broker.</p>
+			<li><p style="margin-bottom: 0cm"><strong>commitSync():</strong>
+			Commits the current offset.</p>
+			<li><p style="margin-bottom: 0cm"><strong>close():</strong> Closes
+			the consumer and releases resources.</p>
+		</ul>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Consumer Groups:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Definition:</strong> A
+		group of consumers that share the load of reading from a topic.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Benefits:</strong>
+		Enables parallel processing and fault tolerance.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Rebalancing:</strong>
+		When a consumer joins or leaves, partitions are reassigned.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Offset Management:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Automatic Commit:</strong>
+		Offsets are periodically committed by the consumer.</p>
+		<li><p><strong>Manual Commit:</strong> Applications control when
+		offsets are committed, providing more control.</p>
+	</ul>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 10: <strong>Quiz: Producing and Consuming</strong></h4>
+<ol>
+	<li><p style="margin-bottom: 0cm"><strong>What is the difference
+	between synchronous and asynchronous sends in Kafka?</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm">Synchronous sends block until a
+		response is received, while asynchronous sends do not block and
+		handle responses in the background.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Explain the concept of
+	consumer groups.</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm">Consumer groups allow multiple
+		consumers to share the workload of reading from a topic, with each
+		consumer in the group handling a subset of the partitions.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>How does Kafka manage
+	offsets?</strong></p>
+	<ul>
+		<li><p>Kafka tracks the position of consumers in each partition
+		using offsets, which can be managed automatically or manually.</p>
+	</ul>
+</ol>
+<hr/>
+
+<h4 class="western">Slide 11: <strong>Lab Work: Producing and
+Consuming Messages</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Objective:</strong>
+	Produce and consume messages using Java.</p>
+	<li><p style="margin-bottom: 0cm"><strong>Steps:</strong></p>
+	<ol>
+		<li><p style="margin-bottom: 0cm"><strong>Set Up Java Project:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm">Create a new Java project and
+			add Kafka dependencies (e.g., using Maven or Gradle).</p>
+		</ul>
+		<li><p style="margin-bottom: 0cm"><strong>Write a Simple Producer:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm">Implement a Java class to send
+			messages to a Kafka topic.</p>
+			<li><p>Example Code:</p>
+			<pre class="western">java
+Copy code
+<code class="western">Properties props = new Properties();</code>
+<code class="western">props.put(&quot;bootstrap.servers&quot;, &quot;localhost:9092&quot;);</code>
+<code class="western">props.put(&quot;key.serializer&quot;, &quot;org.apache.kafka.common.serialization.StringSerializer&quot;);</code>
+<code class="western">props.put(&quot;value.serializer&quot;, &quot;org.apache.kafka.common.serialization.StringSerializer&quot;);</code>
+<code class="western">KafkaProducer&lt;String, String&gt; producer = new KafkaProducer&lt;&gt;(props);</code>
+<code class="western">producer.send(new ProducerRecord&lt;&gt;(&quot;test&quot;, &quot;key&quot;, &quot;value&quot;));</code>
+<code class="western">producer.close();</code></pre>
+		</ul>
+		<li><p style="margin-bottom: 0cm"><strong>Write a Simple Consumer:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm">Implement a Java class to read
+			messages from a Kafka topic.</p>
+			<li><p>Example Code:</p>
+			<pre class="western">java
+Copy code
+<code class="western">Properties props = new Properties();</code>
+<code class="western">props.put(&quot;bootstrap.servers&quot;, &quot;localhost:9092&quot;);</code>
+<code class="western">props.put(&quot;group.id&quot;, &quot;test-group&quot;);</code>
+<code class="western">props.put(&quot;key.deserializer&quot;, &quot;org.apache.kafka.common.serialization.StringDeserializer&quot;);</code>
+<code class="western">props.put(&quot;value.deserializer&quot;, &quot;org.apache.kafka.common.serialization.StringDeserializer&quot;);</code>
+<code class="western">KafkaConsumer&lt;String, String&gt; consumer = new KafkaConsumer&lt;&gt;(props);</code>
+<code class="western">consumer.subscribe(Arrays.asList(&quot;test&quot;));</code>
+<code class="western">while (true) {</code>
+<code class="western">    </code><code class="western">ConsumerRecords&lt;String, String&gt; records = consumer.poll(Duration.ofMillis(100));</code>
+<code class="western">    </code><code class="western">for (ConsumerRecord&lt;String, String&gt; record : records) {</code>
+<code class="western">        </code><code class="western">System.out.printf(&quot;offset = %d, key = %s, value = %s%n&quot;, record.offset(), record.key(), record.value());</code>
+<code class="western">    </code><code class="western">}</code>
+<code class="western">}</code></pre>
+		</ul>
+	</ol>
+	<li><p><strong>Resources:</strong> <a href="https://kafka.apache.org/documentation/#producerapi" target="_new">Kafka
+	Java API Documentation</a></p>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 12: <strong>Kafka Streams</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Introduction:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm">Kafka Streams is a client library
+		for building applications and microservices, where the input and
+		output data are stored in Kafka clusters.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>KStream and KTable:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>KStream:</strong>
+		Represents an unbounded, continuously updating stream of data.</p>
+		<li><p style="margin-bottom: 0cm"><strong>KTable:</strong>
+		Represents a table of changelog stream, where each record is an
+		update on the previous one.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Operations:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Filtering:</strong>
+		<code class="western">filter()</code>, <code class="western">filterNot()</code></p>
+		<li><p style="margin-bottom: 0cm"><strong>Mapping:</strong> <code class="western">map()</code>,
+		<code class="western">flatMap()</code></p>
+		<li><p style="margin-bottom: 0cm"><strong>Joining:</strong> <code class="western">join()</code>,
+		<code class="western">leftJoin()</code>, <code class="western">outerJoin()</code></p>
+		<li><p><strong>Aggregating:</strong> <code class="western">groupByKey()</code>,
+		<code class="western">reduce()</code>, <code class="western">aggregate()</code></p>
+	</ul>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 13: <strong>KSQL</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Introduction:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm">KSQL is a streaming SQL engine
+		for Apache Kafka, allowing for real-time data processing with an
+		easy-to-use SQL syntax.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Key Features:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Stream and Table
+		Creation:</strong> Define streams and tables directly from Kafka
+		topics.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Querying:</strong>
+		Perform continuous queries on data streams.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Transformations:</strong>
+		Apply transformations to data in real-time.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Basic Examples:</strong></p>
+	<ul>
+		<li><p><strong>Create Stream:</strong></p>
+		<pre class="western">sql
+Copy code
+<code class="western">CREATE STREAM user_actions (user_id VARCHAR, action VARCHAR) </code>
+<code class="western">WITH (KAFKA_TOPIC='user_actions', VALUE_FORMAT='JSON');</code></pre>
+		<li><p><strong>Simple Query:</strong></p>
+		<pre class="western">sql
+Copy code
+<code class="western">SELECT user_id, COUNT(*) </code>
+<code class="western">FROM user_actions </code>
+<code class="western">GROUP BY user_id;</code></pre>
+	</ul>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 14: <strong>Quiz: Kafka Streams and KSQL</strong></h4>
+<ol>
+	<li><p style="margin-bottom: 0cm"><strong>What is the difference
+	between KStream and KTable?</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm">KStream represents an unbounded
+		stream of data, while KTable represents a changelog stream where
+		each record is an update to the previous one.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Provide an example of a
+	KSQL query.</strong></p>
+	<ul>
+		<li><p><code class="western">SELECT user_id, COUNT(*) FROM
+		user_actions GROUP BY user_id;</code></p>
+	</ul>
+</ol>
+<hr/>
+
+<h4 class="western">Slide 15: <strong>Lab Work: Kafka Streams</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Objective:</strong>
+	Implement stream processing using the Kafka Streams API.</p>
+	<li><p style="margin-bottom: 0cm"><strong>Steps:</strong></p>
+	<ol>
+		<li><p style="margin-bottom: 0cm"><strong>Set Up Java Project:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm">Create a new Java project and
+			add Kafka Streams dependencies (e.g., using Maven or Gradle).</p>
+		</ul>
+		<li><p style="margin-bottom: 0cm"><strong>Write a Stream Processing
+		Application:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm">Implement a Java class to
+			process streams of data.</p>
+			<li><p>Example Code:</p>
+			<pre class="western">java
+Copy code
+<code class="western">Properties props = new Properties();</code>
+<code class="western">props.put(StreamsConfig.APPLICATION_ID_CONFIG, &quot;streams-example&quot;);</code>
+<code class="western">props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, &quot;localhost:9092&quot;);</code>
+<code class="western">props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());</code>
+<code class="western">props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());</code>
+<code class="western">StreamsBuilder builder = new StreamsBuilder();</code>
+<code class="western">KStream&lt;String, String&gt; source = builder.stream(&quot;source-topic&quot;);</code>
+<code class="western">KStream&lt;String, String&gt; transformed = source.mapValues(value -&gt; value.toUpperCase());</code>
+<code class="western">transformed.to(&quot;sink-topic&quot;);</code>
+<code class="western">KafkaStreams streams = new KafkaStreams(builder.build(), props);</code>
+<code class="western">streams.start();</code></pre>
+		</ul>
+		<li><p style="margin-bottom: 0cm"><strong>Run and Monitor the
+		Application:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm">Start the application and
+			monitor the data flow using Kafka tools.</p>
+		</ul>
+	</ol>
+	<li><p><strong>Resources:</strong> <a href="https://kafka.apache.org/documentation/streams/" target="_new">Kafka
+	Streams Documentation</a></p>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 16: <strong>Kafka Connect and Integrations</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Introduction:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm">Kafka Connect is a tool for
+		scalably and reliably streaming data between Apache Kafka and other
+		systems.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Source and Sink
+	Connectors:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Source Connectors:</strong>
+		Pull data from external systems into Kafka.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Sink Connectors:</strong>
+		Push data from Kafka to external systems.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Configuration:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Setting Up Connectors:</strong>
+		Configure connectors using JSON configuration files.</p>
+		<li><p><strong>Example Configuration:</strong></p>
+		<pre class="western">json
+Copy code
+<code class="western">{</code>
+<code class="western">  </code><code class="western">&quot;name&quot;: &quot;jdbc-source&quot;,</code>
+<code class="western">  </code><code class="western">&quot;config&quot;: {</code>
+<code class="western">    </code><code class="western">&quot;connector.class&quot;: &quot;io.confluent.connect.jdbc.JdbcSourceConnector&quot;,</code>
+<code class="western">    </code><code class="western">&quot;tasks.max&quot;: &quot;1&quot;,</code>
+<code class="western">    </code><code class="western">&quot;connection.url&quot;: &quot;jdbc:mysql://localhost:3306/mydb&quot;,</code>
+<code class="western">    </code><code class="western">&quot;connection.user&quot;: &quot;user&quot;,</code>
+<code class="western">    </code><code class="western">&quot;connection.password&quot;: &quot;password&quot;,</code>
+<code class="western">    </code><code class="western">&quot;table.whitelist&quot;: &quot;my_table&quot;,</code>
+<code class="western">    </code><code class="western">&quot;mode&quot;: &quot;incrementing&quot;,</code>
+<code class="western">    </code><code class="western">&quot;incrementing.column.name&quot;: &quot;id&quot;,</code>
+<code class="western">    </code><code class="western">&quot;topic.prefix&quot;: &quot;jdbc-&quot;</code>
+<code class="western">  </code><code class="western">}</code>
+<code class="western">}</code></pre>
+	</ul>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 17: <strong>Advanced Kafka Features</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Transactions:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Introduction:</strong>
+		Ensures atomicity and consistency across multiple operations.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Transactional Producers
+		and Consumers:</strong> Use transactions to achieve exactly-once
+		semantics.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Security:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>SSL Encryption:</strong>
+		Secure data in transit between clients and brokers.</p>
+		<li><p style="margin-bottom: 0cm"><strong>SASL Authentication:</strong>
+		Authenticate clients connecting to Kafka brokers.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Access Control Lists
+		(ACLs):</strong> Manage permissions for Kafka resources.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Monitoring and Management:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Tools:</strong>
+		Prometheus, Grafana, Kafka Manager.</p>
+		<li><p><strong>Best Practices:</strong> Regular monitoring,
+		alerting, and capacity planning.</p>
+	</ul>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 18: <strong>Quiz: Advanced Features</strong></h4>
+<ol>
+	<li><p style="margin-bottom: 0cm"><strong>Explain Kafka
+	transactions.</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm">Kafka transactions allow multiple
+		operations to be executed atomically, ensuring data consistency.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>How can you secure a Kafka
+	cluster?</strong></p>
+	<ul>
+		<li><p>By using SSL for encryption, SASL for authentication, and
+		ACLs for access control.</p>
+	</ul>
+</ol>
+<hr/>
+
+<h4 class="western">Slide 19: <strong>Lab Work: Kafka Connect</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Objective:</strong>
+	Integrate Kafka with a database using Kafka Connect.</p>
+	<li><p style="margin-bottom: 0cm"><strong>Steps:</strong></p>
+	<ol>
+		<li><p style="margin-bottom: 0cm"><strong>Set Up Kafka Connect:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm">Download and install Kafka
+			Connect.</p>
+			<li><p style="margin-bottom: 0cm">Configure Kafka Connect
+			properties.</p>
+		</ul>
+		<li><p style="margin-bottom: 0cm"><strong>Set Up Source Connector:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm">Create a JSON configuration file
+			for the source connector.</p>
+			<li><p>Example Configuration:</p>
+			<pre class="western">json
+Copy code
+<code class="western">{</code>
+<code class="western">  </code><code class="western">&quot;name&quot;: &quot;jdbc-source&quot;,</code>
+<code class="western">  </code><code class="western">&quot;config&quot;: {</code>
+<code class="western">    </code><code class="western">&quot;connector.class&quot;: &quot;io.confluent.connect.jdbc.JdbcSourceConnector&quot;,</code>
+<code class="western">    </code><code class="western">&quot;tasks.max&quot;: &quot;1&quot;,</code>
+<code class="western">    </code><code class="western">&quot;connection.url&quot;: &quot;jdbc:mysql://localhost:3306/mydb&quot;,</code>
+<code class="western">    </code><code class="western">&quot;connection.user&quot;: &quot;user&quot;,</code>
+<code class="western">    </code><code class="western">&quot;connection.password&quot;: &quot;password&quot;,</code>
+<code class="western">    </code><code class="western">&quot;table.whitelist&quot;: &quot;my_table&quot;,</code>
+<code class="western">    </code><code class="western">&quot;mode&quot;: &quot;incrementing&quot;,</code>
+<code class="western">    </code><code class="western">&quot;incrementing.column.name&quot;: &quot;id&quot;,</code>
+<code class="western">    </code><code class="western">&quot;topic.prefix&quot;: &quot;jdbc-&quot;</code>
+<code class="western">  </code><code class="western">}</code>
+<code class="western">}</code></pre>
+		</ul>
+		<li><p style="margin-bottom: 0cm"><strong>Set Up Sink Connector:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm">Create a JSON configuration file
+			for the sink connector.</p>
+			<li><p>Example Configuration:</p>
+			<pre class="western">json
+Copy code
+<code class="western">{</code>
+<code class="western">  </code><code class="western">&quot;name&quot;: &quot;jdbc-sink&quot;,</code>
+<code class="western">  </code><code class="western">&quot;config&quot;: {</code>
+<code class="western">    </code><code class="western">&quot;connector.class&quot;: &quot;io.confluent.connect.jdbc.JdbcSinkConnector&quot;,</code>
+<code class="western">    </code><code class="western">&quot;tasks.max&quot;: &quot;1&quot;,</code>
+<code class="western">    </code><code class="western">&quot;connection.url&quot;: &quot;jdbc:mysql://localhost:3306/mydb&quot;,</code>
+<code class="western">    </code><code class="western">&quot;connection.user&quot;: &quot;user&quot;,</code>
+<code class="western">    </code><code class="western">&quot;connection.password&quot;: &quot;password&quot;,</code>
+<code class="western">    </code><code class="western">&quot;topics&quot;: &quot;jdbc-my_table&quot;,</code>
+<code class="western">    </code><code class="western">&quot;insert.mode&quot;: &quot;insert&quot;,</code>
+<code class="western">    </code><code class="western">&quot;auto.create&quot;: &quot;true&quot;</code>
+<code class="western">  </code><code class="western">}</code>
+<code class="western">}</code></pre>
+		</ul>
+		<li><p style="margin-bottom: 0cm"><strong>Monitor Data Flow:</strong></p>
+		<ul>
+			<li><p style="margin-bottom: 0cm">Use Kafka tools and logs to
+			ensure data is flowing correctly.</p>
+		</ul>
+	</ol>
+	<li><p><strong>Resources:</strong> <a href="https://kafka.apache.org/documentation/#connect" target="_new">Kafka
+	Connect Documentation</a></p>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 20: <strong>Conclusion and Q&amp;A</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Summary:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Key Concepts:</strong>
+		Review of topics covered, from Kafka basics to advanced features.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Hands-On Experience:</strong>
+		Recap of lab work and practical exercises.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Q&amp;A Session:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm">Open the floor for questions and
+		address any queries from participants.</p>
+	</ul>
+	<li><p style="margin-bottom: 0cm"><strong>Next Steps:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><strong>Further Reading:</strong>
+		Recommended books and articles on Kafka.</p>
+		<li><p style="margin-bottom: 0cm"><strong>Additional Resources:</strong>
+		Links to tutorials, courses, and community forums.</p>
+		<li><p><strong>Practice Exercises:</strong> Suggested exercises for
+		further practice.</p>
+	</ul>
+</ul>
+<hr/>
+
+<h4 class="western">Slide 21: <strong>Additional Resources</strong></h4>
+<ul>
+	<li><p style="margin-bottom: 0cm"><strong>Official Kafka
+	Documentation:</strong> <a href="https://kafka.apache.org/documentation/" target="_new">Kafka
+	Documentation</a></p>
+	<li><p style="margin-bottom: 0cm"><strong>Kafka Tutorials:</strong>
+	Confluent Tutorials</p>
+	<li><p style="margin-bottom: 0cm"><strong>Community Forums and
+	Support:</strong></p>
+	<ul>
+		<li><p style="margin-bottom: 0cm"><a href="https://stackoverflow.com/questions/tagged/apache-kafka" target="_new">Stack
+		Overflow</a></p>
+		<li><p><a href="https://kafka.apache.org/contact" target="_new">Kafka
+		Mailing List</a></p>
+	</ul>
+</ul>
+<hr/>
+
+<p style="line-height: 100%; margin-bottom: 0cm"><br/>
+
+</p>
+</body>
+</html>
