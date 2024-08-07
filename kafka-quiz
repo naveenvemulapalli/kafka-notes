@@ -1,0 +1,133 @@
+Which component of Kafka is responsible for storing the data? 
+a) Producer
+b) Consumer
+*c) Broker
+d) Zookeeper
+
+In Kafka, what is a topic? 
+a) A single message
+*b) A category or feed name to which records are stored and published
+c) A client that reads data
+d) A server that stores data
+
+What does a Kafka Consumer Group do? 
+a) Aggregates multiple producers
+b) Ensures messages are stored in multiple partitions
+c) Allows multiple consumers to read from the same topic independently
+*d) Coordinates multiple consumers to read from a topic together
+
+
+What is the primary purpose of Zookeeper in a Kafka cluster? 
+a) Storing message data
+b) Managing producers and consumers
+*c) Keeping configuration information and coordinating distributed systems
+d) Processing data streams
+
+
+How does Kafka ensure message durability and reliability? 
+a) By caching messages in memory
+*b) By writing messages to disk and replicating them across multiple brokers
+c) By sending acknowledgements to consumers
+d) By using in-memory databases
+
+
+What is a Kafka partition? 
+*a) A collection of messages within a topic
+b) A backup of the topic
+c) A way to group different topics
+d) A configuration setting for topic replication
+
+
+What does the acks configuration parameter in a Kafka producer determine? 
+a) The number of consumers that will read a message
+*b) The number of replicas that must acknowledge receipt of a message before the producer considers the write successful
+c) The number of partitions in a topic
+d) The size of messages that can be sent
+
+
+
+In Kafka, what is a topic? 
+a. A single message
+*b. A category to which messages are sent by producers
+c. A log file
+d. A configuration file
+
+
+What is a Kafka partition? 
+a. A backup of a topic
+b. A single consumer group
+*c. A division of a topic's log
+d. A producer client
+
+How does Kafka ensure message durability? 
+a. By caching messages in memory
+*b. By replicating messages across multiple brokers
+c. By storing messages in temporary files
+d. By using synchronous writes
+
+Which of the following describes a consumer group in Kafka? 
+a. A group of producers
+*b. A group of consumers that share a common subscription to a topic
+c. A set of Kafka brokers
+d. A set of Kafka partitions
+
+In Kafka, what is an offset? 
+*a. A unique identifier for each message within a partition
+b. The time a message was produced
+c. The broker ID
+d. The consumer group ID
+
+What is the purpose of the Kafka retention policy? 
+*a. To delete old messages from topics based on configured criteria
+b. To manage the producer throughput
+c. To balance the load across consumers
+d. To increase message processing speed
+
+How do consumers in a consumer group consume messages in Kafka? 
+a. Each consumer in the group consumes the same message
+*b. Each consumer in the group consumes messages from different partitions
+c. Consumers do not consume messages; producers do
+d. Each consumer consumes messages from all partitions in the topic
+
+Which of the following best describes a Kafka broker?
+A) A server that handles HTTP requests
+*B) A server that stores and retrieves messages
+C) A client library for Java applications
+D) A tool for managing Kafka configurations
+
+In Kafka, what is a topic?
+A) A unique identifier for a message
+*B) A channel for data streams
+C) A group of consumers
+D) A configuration file
+
+How can a Kafka consumer commit offsets?
+A) Automatically at regular intervals
+B) Manually by the application
+*C) Both A and B
+D) Offsets cannot be committed
+
+What is the purpose of the Kafka Zookeeper?
+A) To store messages
+B) To manage producer and consumer configurations
+*C) To coordinate and manage Kafka brokers
+D) To perform data serialization and deserialization
+
+Which command is used to start a Kafka server?
+*A) kafka-server-start.sh
+B) kafka-server.sh
+C) kafka-start.sh
+D) kafka-broker-start.sh
+
+Which of the following is NOT a valid Kafka configuration? 
+a) bootstrap.servers
+b) group.id
+*c) topic.name
+d) key.serializer
+
+
+What is the main purpose of Kafka Partitions? 
+a) To store configurations
+*b) To enable parallelism and scalability
+c) To manage consumer offsets
+d) To compress data efficiently
