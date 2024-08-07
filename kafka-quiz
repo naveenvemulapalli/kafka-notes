@@ -131,3 +131,251 @@ a) To store configurations
 *b) To enable parallelism and scalability
 c) To manage consumer offsets
 d) To compress data efficiently
+
+=====================================================================
+Producer Properties MCQ
+Question 1:
+Which property specifies the list of host/port pairs used for establishing the initial connection to the Kafka cluster?
+a) broker.list
+b) server.addresses
+c) bootstrap.servers
+d) initial.brokers
+
+Question 2:
+Which property defines the serializer class for the key in a Kafka producer?
+a) key.serializer
+b) key.deserializer
+c) key.converter
+d) key.encoder
+
+Question 3:
+To ensure that exactly one copy of each message is written in the stream, which property should be set to true?
+a) enable.exactly.once
+b) ensure.uniqueness
+c) enable.idempotence
+d) idempotence.enabled
+
+Question 4:
+Which property controls the maximum number of unacknowledged requests the client will send on a single connection before blocking?
+a) max.requests.per.connection
+b) max.pending.requests
+c) max.in.flight.requests.per.connection
+d) max.unacknowledged.requests
+
+Question 5:
+To compress the data sent by the producer, which property would you configure?
+a) compression.method
+b) compression.type
+c) compression.codec
+d) data.compression
+
+Question 6:
+Which property controls the maximum amount of time the client will wait for the response of a request?
+a) request.timeout.ms
+b) response.timeout.ms
+c) client.timeout.ms
+d) server.timeout.ms
+
+Question 7:
+What does the linger.ms property do?
+a) Delays sending messages until the batch size is reached
+b) Controls the frequency of sending heartbeat requests
+c) Adds a delay to allow more records to be sent in a single batch
+d) Sets the maximum time to wait for acknowledgments
+
+Question 8:
+Which property should be set to define the total bytes of memory the producer can use to buffer records waiting to be sent to the server?
+a) memory.buffer.size
+b) buffer.memory
+c) total.buffer.memory
+d) producer.buffer.limit
+
+Question 9:
+Which property specifies the number of acknowledgments the producer requires the leader to have received before considering a request complete?
+a) acks
+b) acknowledgments
+c) required.acks
+d) leader.acks
+
+Question 10:
+To set a unique identifier for a Kafka producer for server-side logging, which property is used?
+a) producer.id
+b) unique.id
+c) client.id
+d) logger.id
+
+Question 11:
+If you want to set the maximum amount of time KafkaProducer.send() and KafkaProducer.partitionsFor() will block, which property would you use?
+a) max.block.time.ms
+b) send.timeout.ms
+c) request.block.ms
+d) max.block.ms
+
+Question 12:
+What does the batch.size property control?
+a) The maximum number of messages in a batch
+b) The maximum number of bytes per batch
+c) The maximum number of requests per batch
+d) The maximum number of retries per batch
+
+Question 13:
+Which property would you configure to set the maximum amount of time to wait for the complete delivery of the record?
+a) delivery.timeout.ms
+b) record.delivery.timeout
+c) message.delivery.time.ms
+d) complete.delivery.timeout.ms
+
+Question 14:
+Which property controls the number of retries a producer will attempt if a request fails?
+a) retry.limit
+b) max.retries
+c) retries
+d) retry.attempts
+
+Question 15:
+To specify the serializer class for the value in a Kafka producer, which property is used?
+a) value.serializer
+b) value.deserializer
+c) value.converter
+d) value.encoder
+
+Answer Key:
+c) bootstrap.servers
+a) key.serializer
+c) enable.idempotence
+c) max.in.flight.requests.per.connection
+b) compression.type
+a) request.timeout.ms
+c) Adds a delay to allow more records to be sent in a single batch
+b) buffer.memory
+a) acks
+c) client.id
+d) max.block.ms
+b) The maximum number of bytes per batch
+a) delivery.timeout.ms
+c) retries
+a) value.serializer
+
+===================================
+Consumer Properties MCQ
+Question 1:
+Which property specifies the list of host/port pairs used for establishing the initial connection to the Kafka cluster?
+a) broker.list
+b) server.addresses
+c) bootstrap.servers
+d) initial.brokers
+
+Question 2:
+Which property defines a unique string that identifies the consumer group this consumer belongs to?
+a) consumer.group
+b) group.id
+c) group.name
+d) consumer.id
+
+Question 3:
+To specify the deserializer class for the key in a Kafka consumer, which property would you use?
+a) key.deserializer
+b) key.serializer
+c) key.converter
+d) key.decoder
+
+Question 4:
+Which property should be set to true if you want consumer offsets to be automatically committed in the background?
+a) auto.commit.enable
+b) commit.auto
+c) enable.auto.commit
+d) auto.commit
+
+Question 5:
+What does the auto.offset.reset property do?
+a) Resets the offset to the beginning or end of the log if no initial offset is found
+b) Automatically commits the offset after a set interval
+c) Defines the time interval for offset resets
+d) Determines the size of the offset reset window
+
+Question 6:
+Which property controls the frequency in milliseconds that the consumer offsets are auto-committed to Kafka?
+a) auto.commit.interval.ms
+b) commit.interval.ms
+c) offset.commit.interval.ms
+d) interval.auto.commit.ms
+
+Question 7:
+Which property determines the minimum amount of data the server should return for a fetch request?
+a) fetch.min.bytes
+b) min.fetch.size
+c) fetch.data.min.bytes
+d) min.bytes.fetch
+
+Question 8:
+Which property controls the maximum number of records returned in a single call to poll()?
+a) poll.max.records
+b) max.poll.records
+c) record.max.poll
+d) fetch.max.records
+
+Question 9:
+To set the maximum delay between invocations of poll() when using consumer group management, which property is used?
+a) max.poll.delay.ms
+b) poll.interval.ms
+c) max.poll.interval.ms
+d) poll.max.delay.ms
+
+Question 10:
+What does the session.timeout.ms property specify?
+a) The maximum delay between sending heartbeats
+b) The timeout used to detect consumer failures
+c) The time interval for committing offsets
+d) The maximum time to wait for a fetch response
+
+Question 11:
+Which property controls the expected time between heartbeats to the consumer coordinator when using group management?
+a) heartbeat.timeout.ms
+b) heartbeat.interval.ms
+c) heartbeat.delay.ms
+d) heartbeat.period.ms
+
+Question 12:
+Which property specifies the maximum amount of time the server will block before answering a fetch request if there isn't sufficient data to immediately satisfy fetch.min.bytes?
+a) fetch.max.wait.ms
+b) max.fetch.wait.time.ms
+c) fetch.wait.timeout.ms
+d) max.wait.fetch.ms
+
+Question 13:
+What does the max.partition.fetch.bytes property control?
+a) The maximum amount of data the consumer can fetch in a single request
+b) The maximum amount of data per partition the server will return in a single fetch response
+c) The maximum size of the consumer's buffer for fetching data
+d) The maximum number of bytes the producer can send per partition
+
+Question 14:
+To specify an id string to pass to the server for server-side logging, which property would you configure?
+a) consumer.id
+b) client.id
+c) consumer.name
+d) client.name
+
+Question 15:
+If you want to control the maximum number of retries a consumer will attempt if a request fails, which property would you use?
+a) max.retries
+b) retry.limit
+c) retry.attempts
+d) max.retry.count
+
+Answer Key:
+c) bootstrap.servers
+b) group.id
+a) key.deserializer
+c) enable.auto.commit
+a) Resets the offset to the beginning or end of the log if no initial offset is found
+a) auto.commit.interval.ms
+a) fetch.min.bytes
+b) max.poll.records
+c) max.poll.interval.ms
+b) The timeout used to detect consumer failures
+b) heartbeat.interval.ms
+a) fetch.max.wait.ms
+b) The maximum amount of data per partition the server will return in a single fetch response
+b) client.id
+a) max.retries
