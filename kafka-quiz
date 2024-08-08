@@ -379,3 +379,39 @@ a) fetch.max.wait.ms
 b) The maximum amount of data per partition the server will return in a single fetch response
 b) client.id
 a) max.retries
+===========================================================================
+Question 1: What happens if a producer does not set a key for a message in Kafka?
+
+A. Kafka assigns a default key automatically.
+B. The message is rejected and not stored in Kafka.
+C. Kafka treats the message as having no key (null key).
+D. Kafka throws an exception and stops the producer.
+
+Answer: C. Kafka treats the message as having no key (null key).
+
+Question 2: Why might a producer choose to include a key with a message in Kafka?
+
+A. To ensure the message is delivered exactly once.
+B. To specify which topic the message should be sent to.
+C. To control the partition to which the message is sent.
+D. All of the above.
+
+Answer: C. To control the partition to which the message is sent.
+
+Question 3: Which of the following statements about Kafka keys is true?
+
+A. Kafka requires a key to be set for every message.
+B. If no key is set by the producer, Kafka assigns a default key automatically.
+C. Keys are used in Kafka for authentication purposes.
+D. Keys are optional and their presence affects message partitioning.
+
+Answer: D. Keys are optional and their presence affects message partitioning.
+
+Question 4: What role does a key play in Kafka message processing?
+
+A. It determines the message format (JSON, XML, etc.).
+B. It controls the order in which messages are processed by consumers.
+C. It specifies the Kafka cluster to which the message should be sent.
+D. It influences the partitioning of messages across Kafka topics.
+
+Answer: D. It influences the partitioning of messages across Kafka topics.
